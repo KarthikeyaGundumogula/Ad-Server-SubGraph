@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: Server
@@ -19,7 +19,7 @@ dataSources:
         - Advertiser
       abis:
         - name: Server
-          file: ./abis/Server.json
+          file: Server\abis\Server.json
       eventHandlers:
         - event: AdCreated(uint256,uint256,string,address)
           handler: handleAdCreated
@@ -41,4 +41,4 @@ dataSources:
           handler: handlefundsAdded
         - event: fundsRemoved(uint256,uint256)
           handler: handlefundsRemoved
-      file: ./src/server.ts
+      file: Server\Server.wasm
