@@ -69,6 +69,15 @@ export class Ad extends Entity {
     this.set("TotalFunds", Value.fromBigInt(value));
   }
 
+  get CurrentFunds(): BigInt {
+    let value = this.get("CurrentFunds");
+    return value!.toBigInt();
+  }
+
+  set CurrentFunds(value: BigInt) {
+    this.set("CurrentFunds", Value.fromBigInt(value));
+  }
+
   get TotalClicks(): BigInt {
     let value = this.get("TotalClicks");
     return value!.toBigInt();

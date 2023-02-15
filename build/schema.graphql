@@ -3,6 +3,7 @@ type Ad @entity {
   AdId: BigInt! #uint256
   Advertiser: Bytes! #Address
   TotalFunds: BigInt! #uint256
+  CurrentFunds: BigInt! #uint256
   TotalClicks: BigInt! #uint256
   TotalViews: BigInt! #uint256
   Publishers: [BigInt!]! #uint256[]

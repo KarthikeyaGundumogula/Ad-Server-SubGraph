@@ -19,6 +19,7 @@ export function handleAdCreated(event: AdCreatedEvent): void {
   entity.AdId = event.params.id;
   entity.Advertiser = event.params.Advertiser;
   entity.TotalFunds = event.params.totalFunds;
+  entity.CurrentFunds = event.params.totalFunds;
   entity.TotalClicks = new BigInt(0);
   entity.TotalViews = new BigInt(0);
   entity.Publishers = new Array<BigInt>();
@@ -105,9 +106,9 @@ export function handleAdServed(event: AdServedEvent): void {
     let totalViews = entity.TotalViews;
     totalViews = totalViews.plus(inc);
     entity.TotalViews = totalViews;
-    let totalFunds = entity.TotalFunds;
-    totalFunds = totalFunds.minus(pubEntity.ViewReward);
-    entity.TotalFunds = totalFunds;
+    let currentFunds = entity.CurrentFunds;
+    currentFunds = currentFunds.minus(pubEntity.ViewReward);
+    entity.CurrentFunds = currentFunds;
     entity.save();
     totalViews = pubEntity.TotalViews;
     totalViews = totalViews.plus(inc);
@@ -133,7 +134,7 @@ export function handleClick(event: ClickEvent): void {
     let totalClicks = entity.TotalClicks;
     totalClicks = totalClicks.plus(inc);
     entity.TotalClicks = totalClicks;
-    entity.TotalFunds = entity.TotalFunds.minus(pubEntity.ClickReward);
+    entity.CurrentFunds = entity.CurrentFunds.minus(pubEntity.ClickReward);
     totalClicks = pubEntity.TotalClicks;
     totalClicks = totalClicks.plus(inc);
     pubEntity.TotalClicks = totalClicks;
@@ -189,6 +190,7 @@ export function handlefundsAdded(event: fundsAddedEvent): void {
   let entity = Ad.load(event.params.id.toString());
   if (entity != null) {
     entity.TotalFunds = entity.TotalFunds.plus(event.params.AddedAmount);
+    entity.CurrentFunds = entity.CurrentFunds.plus(event.params.AddedAmount);
     entity.save();
   } else {
     return;
