@@ -105,13 +105,13 @@ export class Ad extends Entity {
     this.set("Publishers", Value.fromBigIntArray(value));
   }
 
-  get AdImg(): string {
-    let value = this.get("AdImg");
+  get AdData(): string {
+    let value = this.get("AdData");
     return value!.toString();
   }
 
-  set AdImg(value: string) {
-    this.set("AdImg", Value.fromString(value));
+  set AdData(value: string) {
+    this.set("AdData", Value.fromString(value));
   }
 
   get isRunning(): boolean {

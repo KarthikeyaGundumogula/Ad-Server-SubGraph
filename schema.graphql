@@ -7,7 +7,7 @@ type Ad @entity {
   TotalClicks: BigInt! #uint256
   TotalViews: BigInt! #uint256
   Publishers: [BigInt!]! #uint256[]
-  AdImg: String! #string
+  AdData: String! #string
   isRunning: Boolean! #bool
   BlockNumber: BigInt! #uint256
   BlockTimestamp: BigInt! #uint256

@@ -23,7 +23,7 @@ export function handleAdCreated(event: AdCreatedEvent): void {
   entity.TotalClicks = new BigInt(0);
   entity.TotalViews = new BigInt(0);
   entity.Publishers = new Array<BigInt>();
-  entity.AdImg = event.params.AdURI;
+  entity.AdData = event.params.AdURI;
   entity.isRunning = false;
   let AdvertiserEntity = Advertiser.load(event.params.Advertiser.toString());
   if (AdvertiserEntity == null) {
