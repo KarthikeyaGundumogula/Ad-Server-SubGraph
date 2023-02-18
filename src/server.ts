@@ -201,6 +201,7 @@ export function handlefundsRemoved(event: fundsRemovedEvent): void {
   let entity = Ad.load(event.params.id.toString());
   if (entity != null) {
     entity.TotalFunds = entity.TotalFunds.minus(event.params.RemovedAmount);
+    entity.CurrentFunds = entity.CurrentFunds.minus(event.params.RemovedAmount);
     entity.save();
   } else {
     return;
